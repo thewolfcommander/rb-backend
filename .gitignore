@@ -116,3 +116,9 @@ ENV/
 .mypy_cache/
 
 
+accounts/migrations/
+accounts/__pycache__/
+core/migrations/
+core/__pycache__/
+rb_backend/__pycache__/
+

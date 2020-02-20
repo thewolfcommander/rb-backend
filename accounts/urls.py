@@ -1,8 +1,10 @@
-from django.urls import path
-from .views import HelloAPIView
+from django.urls import re_path
+
+from .views import RegistrationAPIView, LoginAPIView
 
 app_name = 'accounts'
 
 urlpatterns = [
-    path('', HelloAPIView.as_view(), name='hello'),
+    re_path(r'^registration/?$', RegistrationAPIView.as_view(), name='user_registration'),
+    re_path(r'^login/?$', LoginAPIView.as_view(), name='user_login'),
 ]
