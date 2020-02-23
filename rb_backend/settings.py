@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CORS_ORIGIN_WHITELIST = (
+    'localhost',
+    'rb-backend.herokuapp.com'
+)
+
 
 # Application definition
 
