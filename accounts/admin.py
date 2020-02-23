@@ -1,5 +1,11 @@
 from django.contrib import admin
-from .models import User
+from .models import (
+    User,
+    CustomUserPermissions,
+    UserType,
+    UserProfile,
+    UserDevice
+)
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
@@ -55,3 +61,26 @@ class UserAdmin(admin.ModelAdmin):
             message_bit = "{} users were".format(rows_updated)
         self.message_user(request, "{} successfully marked as staff.".format(message_bit))
     make_user_non_staff.short_description = "Make selected users non Staff"
+
+
+@admin.register(CustomUserPermissions)
+class CustomUserPermissionsAdmin(admin.ModelAdmin):
+    list_display = ['name', 'priority']
+
+
+@admin.register(UserType)
+class UserTypeAdmin(admin.ModelAdmin):
+    list_display = ['name', 'priority']
+    list_filter = ['priority']
+
+
+@admin.register(UserProfile)
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ['user', 'mobile', 'user_type', 'timestamp']
+    list_filter = ['timestamp', 'user_type']
+
+
+@admin.register(UserDevice)
+class UserDeviceAdmin(admin.ModelAdmin):
+    list_display = ['user', 'device_name', 'os', 'browser', 'ip_address', 'timestamp']
+    list_filter = ['os', 'browser', 'timestamp']
